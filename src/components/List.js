@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function List({ activities, isGoodWeather }) {
+export default function List({
+  activities,
+  isGoodWeather,
+  handleDeleteActivity,
+}) {
   // Function receives a boolean
   const filterActivities = (weather) =>
     // Filter activities depending on the weather
@@ -10,6 +14,7 @@ export default function List({ activities, isGoodWeather }) {
       .map((activity) => (
         <li className="activity" key={activity.id}>
           {activity.name}
+          <div onClick={handleDeleteActivity(activity.id)}>x</div>
         </li>
       ));
 

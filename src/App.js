@@ -23,20 +23,29 @@ function App() {
     fetchWeather();
   }, []);
   console.log(weather);
-  const isGoodWeather = weather.isGoodWeather;
+  let isGoodWeather = weather.isGoodWeather;
 
   function handleAddActivity(newActivity) {
     setActivities([...activities, { ...newActivity, id: uid() }]);
   }
 
+  function handleDeleteActivity(id) {
+    // setActivities(activities.filter((activity) => activity.id !== id));
+    console.log(id);
+  }
+
   console.log(activities);
   return (
     <>
-      <section>
+      <section className="emoji">
         {weather.condition}
         {weather.temperature} Grad
       </section>
-      <List activities={activities} isGoodWeather={isGoodWeather} />
+      <List
+        activities={activities}
+        isGoodWeather={isGoodWeather}
+        handleDeleteActivity={handleDeleteActivity}
+      />
 
       <Form onAddActivity={handleAddActivity} />
     </>
