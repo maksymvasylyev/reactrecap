@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 
 export default function Form({ onAddActivity }) {
-  const [formInput, setFormInput] = useState("");
-
+  const [isChecked, setIsChecked] = useState(false);
+  // localStorage.clear();
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    setFormInput(data);
-    console.log(data);
 
-    // const name = data.name;
-    // const isForGoodWeather = data.checkBox.checked;
-    // console.log(name);
-    // console.log(isForGoodWeather);
-
-    onAddActivity(data);
+    onAddActivity({ ...data, isChecked });
+    setIsChecked(false);
 
     event.target.reset();
+  }
+
+  function handleChange(event) {
+    setIsChecked(event.target.checked);
   }
 
   return (
@@ -28,7 +26,12 @@ export default function Form({ onAddActivity }) {
       <input name="name" id="name" type="text" />
 
       <label htmlFor="checkBox">Good-weather activity</label>
-      <input name="checkBox" id="checkBox" type="checkBox" />
+      <input
+        name="checkBox"
+        id="checkBox"
+        type="checkBox"
+        onChange={handleChange}
+      />
 
       <button type="submit">Submit</button>
     </form>
