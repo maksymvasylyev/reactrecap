@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { uid } from "uid";
 import Form from "./components/Form";
 import List from "./components/List";
@@ -10,7 +10,20 @@ function App() {
     defaultValue: [],
   });
 
-  const isGoodWeather = false;
+  const [weather, setWeather] = useState("");
+
+  useEffect(() => {
+    async function fetchWeather() {
+      const response = await fetch(
+        "https://example-apis.vercel.app/api/weather"
+      );
+      const fetchData = await response.json();
+      setWeather(fetchData);
+    }
+    fetchWeather();
+  }, []);
+  console.log(weather);
+  const isGoodWeather = weather.isGoodWeather;
 
   function handleAddActivity(newActivity) {
     setActivities([...activities, { ...newActivity, id: uid() }]);
@@ -19,7 +32,12 @@ function App() {
   console.log(activities);
   return (
     <>
+      <section>
+        {weather.condition}
+        {weather.temperature} Grad
+      </section>
       <List activities={activities} isGoodWeather={isGoodWeather} />
+
       <Form onAddActivity={handleAddActivity} />
     </>
   );
