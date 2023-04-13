@@ -19,7 +19,7 @@ export default function List({
       ));
 
   return (
-    <ul>
+    <ul className="list-container">
       {isGoodWeather ? (
         <>
           <h2>The wather is awesome! Go outside and: </h2>

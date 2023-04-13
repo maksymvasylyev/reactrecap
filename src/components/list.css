@@ -1,0 +1,27 @@
+.list-container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.activity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(167, 167, 167, 0.441);
+  max-width: 33vw;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(100, 100, 100, 0.498);
+}
+
+.activity > div {
+  color: crimson;
+  font-size: 1.3rem;
+}
+
+.activity > div:hover {
+  cursor: pointer;
+}

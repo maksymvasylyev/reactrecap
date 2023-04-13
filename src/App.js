@@ -44,10 +44,10 @@ function App() {
 
   console.log(activities);
   return (
-    <>
+    <div className="App">
       <section className="emoji">
-        {weather.condition}
-        {weather.temperature} Grad
+        <div>{weather.condition}</div>
+        <div>{weather.temperature} Grad</div>
       </section>
       <List
         activities={activities}
@@ -56,7 +56,7 @@ function App() {
       />
 
       <Form onAddActivity={handleAddActivity} />
-    </>
+    </div>
   );
 }
 

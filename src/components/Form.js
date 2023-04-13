@@ -20,20 +20,21 @@ export default function Form({ onAddActivity }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Add new activity</h1>
+      <h1 className="form-title">Add new activity</h1>
+      <section className="form-controls">
+        <label htmlFor="name">Name:</label>
+        <input name="name" id="name" type="text" />
 
-      <label htmlFor="name">Name:</label>
-      <input name="name" id="name" type="text" />
+        <label htmlFor="checkBox">Good-weather activity</label>
+        <input
+          name="checkBox"
+          id="checkBox"
+          type="checkBox"
+          onChange={handleChange}
+        />
 
-      <label htmlFor="checkBox">Good-weather activity</label>
-      <input
-        name="checkBox"
-        id="checkBox"
-        type="checkBox"
-        onChange={handleChange}
-      />
-
-      <button type="submit">Submit</button>
+        <button type="submit">Submit</button>
+      </section>
     </form>
   );
 }
