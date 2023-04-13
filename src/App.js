@@ -12,16 +12,25 @@ function App() {
 
   const [weather, setWeather] = useState("");
 
+  // useEffect(() => {
+  async function fetchWeather() {
+    const response = await fetch("https://example-apis.vercel.app/api/weather");
+    const fetchData = await response.json();
+    setWeather(fetchData);
+  }
+
   useEffect(() => {
-    async function fetchWeather() {
-      const response = await fetch(
-        "https://example-apis.vercel.app/api/weather"
-      );
-      const fetchData = await response.json();
-      setWeather(fetchData);
-    }
     fetchWeather();
+    const timer = setInterval(() => {
+      fetchWeather();
+    }, 5000);
+
+    // cleanup function
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
+
   console.log(weather);
   let isGoodWeather = weather.isGoodWeather;
 
@@ -31,7 +40,6 @@ function App() {
 
   function handleDeleteActivity(id) {
     setActivities(activities.filter((activity) => activity.id !== id));
-    // console.log(id);
   }
 
   console.log(activities);
