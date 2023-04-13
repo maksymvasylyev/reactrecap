@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 export default function Form({ onAddActivity }) {
   const [formInput, setFormInput] = useState("");
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -9,8 +10,14 @@ export default function Form({ onAddActivity }) {
     setFormInput(data);
     console.log(data);
 
+    const name = data.name;
+    // const isForGoodWeather = data.checkBox.checked;
+    console.log(name);
+    // console.log(isForGoodWeather);
+
+    onAddActivity(data);
+
     event.target.reset();
-    event.target.focus();
   }
 
   return (
