@@ -10,7 +10,7 @@ function App() {
     defaultValue: [],
   });
 
-  const isGoodWeather = false;
+  const isGoodWeather = true;
 
   function handleAddActivity(newActivity) {
     setActivities([...activities, { ...newActivity, id: uid() }]);
