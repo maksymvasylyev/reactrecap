@@ -14,7 +14,7 @@ export default function List({
       .map((activity) => (
         <li className="activity" key={activity.id}>
           {activity.name}
-          <div onClick={handleDeleteActivity(activity.id)}>x</div>
+          <div onClick={() => handleDeleteActivity(activity.id)}>x</div>
         </li>
       ));
 
