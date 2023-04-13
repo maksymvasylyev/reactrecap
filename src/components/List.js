@@ -1,33 +1,29 @@
 import React from "react";
 
 export default function List({ activities, isGoodWeather }) {
-  const goodWeatherArray = activities.filter(
-    (activity) => activity.isGoodWeather === true
-  );
-
-  const badWeatherArray = activities.filter(
-    (activity) => activity.isGoodWeather === false
-  );
+  // Function receives a boolean
+  const filterActivities = (weather) =>
+    // Filter activities depending on the weather
+    activities
+      .filter((activity) => activity.isGoodWeather === weather)
+      // Map filtered array elements and render list items
+      .map((activity) => (
+        <li className="activity" key={activity.id}>
+          {activity.name}
+        </li>
+      ));
 
   return (
     <ul>
       {isGoodWeather ? (
         <>
           <h2>The wather is awesome! Go outside and: </h2>
-          {goodWeatherArray.map((activity) => (
-            <li className="activity" key={activity.id}>
-              {activity.name}
-            </li>
-          ))}
+          {filterActivities(isGoodWeather)}
         </>
       ) : (
         <>
           <h2>Bad weather outside! Here's what you can do now: </h2>
-          {badWeatherArray.map((activity) => (
-            <li className="activity" key={activity.id}>
-              {activity.name}
-            </li>
-          ))}
+          {filterActivities(isGoodWeather)}
         </>
       )}
     </ul>
