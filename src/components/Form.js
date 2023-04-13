@@ -10,9 +10,9 @@ export default function Form({ onAddActivity }) {
     setFormInput(data);
     console.log(data);
 
-    const name = data.name;
+    // const name = data.name;
     // const isForGoodWeather = data.checkBox.checked;
-    console.log(name);
+    // console.log(name);
     // console.log(isForGoodWeather);
 
     onAddActivity(data);
