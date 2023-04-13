@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 
 export default function Form({ onAddActivity }) {
-  const [isChecked, setIsChecked] = useState(false);
-  // localStorage.clear();
+  const [isGoodWeather, setIsGoodWeather] = useState(false);
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onAddActivity({ ...data, isChecked });
-    setIsChecked(false);
+    onAddActivity({ ...data, isGoodWeather });
+    setIsGoodWeather(false);
 
     event.target.reset();
   }
 
   function handleChange(event) {
-    setIsChecked(event.target.checked);
+    setIsGoodWeather(event.target.checked);
   }
 
   return (
